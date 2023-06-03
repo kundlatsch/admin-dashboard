@@ -6,7 +6,7 @@ from ..models.client import Client
 from ..validators import validate_cpf, validate_rg, validate_date, validate_phone_number
 
 @authenticate
-def list(client_id):
+def list(client_id: str):
     list_of_addresses = Address.list_by_id(client_id)
     return list_of_addresses
 
@@ -20,7 +20,7 @@ def retrieve(client_id: str, address_id: str):
 
 
 @authenticate
-def insert(client_id):
+def insert(client_id: str):
     data = request.json
 
     address = data.get("address")

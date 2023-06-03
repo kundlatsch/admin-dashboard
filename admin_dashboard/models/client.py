@@ -28,7 +28,7 @@ class Client():
         return deepcopy(self.__dict__)
 
     @staticmethod
-    def get_by_field(field_name, value) -> 'Client':
+    def get_by_field(field_name: str, value: str) -> 'Client':
         # Check if the field is a valid column in the database
         accepted_fields = ["id", "name", "date_of_birth", "cpf", "rg", "rg_state", "phone_number"]
         if field_name not in accepted_fields:
