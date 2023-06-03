@@ -9,6 +9,7 @@ pyjwt = "*"
 python-dotenv = "*"
 pymysql = "*"
 passlib = "*"
+cryptography = "*"
 
 [dev-packages]
 

@@ -52,4 +52,4 @@ def login():
     secret = current_app.config['SECRET_KEY']
     jwt_token = jwt.encode({"id": user.id}, secret, algorithm="HS256")
 
-    return {"token": jwt_token}
+    return {"token": jwt_token, "name": user.name}
