@@ -1,11 +1,14 @@
+from flask import abort, request
+from passlib.hash import sha256_crypt
+
 from ..auth import authenticate
-
 from ..db import fetch_one
+from ..models.user import User
 
-# @authenticate
+@authenticate
 def list():
-    result = fetch_one("SELECT `email` FROM `Users` WHERE `id`=1")
-    if result: return result
+    user = User.get_by_field('id', 1)
+    if user: return user.to_dict()
     else: return []
 
 def insert():

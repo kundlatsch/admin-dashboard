@@ -1,22 +1,27 @@
 import pymysql.cursors
 
 
+connection_dict = {
+    "host": 'localhost',
+    "user": 'root',
+    "password": 'my-secret-pw',
+    "database": 'ADMIN',
+    "cursorclass": pymysql.cursors.DictCursor
+}
 
 def fetch_one(query):
-    connection = pymysql.connect(host='localhost',
-                                user='root',
-                                password='my-secret-pw',
-                                database='ADMIN',
-                                cursorclass=pymysql.cursors.DictCursor)
+    connection = pymysql.connect(**connection_dict)
 
     with connection:
-        # Example insert
-        # with connection.cursor() as cursor:
-        #     sql = "INSERT INTO `users` (`email`, `password`) VALUES (%s, %s)"
-        #     cursor.execute(sql, ('webmaster@python.org', 'very-secret'))
-        # connection.commit()
-
         with connection.cursor() as cursor:
             cursor.execute(query)
             result = cursor.fetchone()
             return result
+
+def execute(query):
+    connection = pymysql.connect(**connection_dict)
+
+    with connection:
+        with connection.cursor() as cursor:
+            cursor.execute(query)
+        connection.commit()

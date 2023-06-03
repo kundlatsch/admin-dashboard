@@ -8,6 +8,7 @@ flask = "*"
 pyjwt = "*"
 python-dotenv = "*"
 pymysql = "*"
+passlib = "*"
 
 [dev-packages]
 
