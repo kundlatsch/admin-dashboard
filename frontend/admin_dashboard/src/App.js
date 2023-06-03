@@ -7,9 +7,9 @@ import Home from './pages/Home'
 
 function App() {
   return (
-    // <AuthProvider>
+    <AuthProvider>
       <Routing />
-    // </AuthProvider>
+    </AuthProvider>
   )
 }
 

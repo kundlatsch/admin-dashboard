@@ -10,6 +10,7 @@ python-dotenv = "*"
 pymysql = "*"
 passlib = "*"
 cryptography = "*"
+flask-cors = "*"
 
 [dev-packages]
 

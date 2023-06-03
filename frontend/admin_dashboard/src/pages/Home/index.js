@@ -11,8 +11,8 @@ import './styles.css';
 function Home() {
 
   let navigate = useNavigate();
-  //const { authenticated, handleLogin } = useContext(Context);
-  const handleLogin = () => {return 'ok'}
+  const { authenticated, handleLogin } = useContext(Context);
+//   const handleLogin = () => {return 'ok'}
   const MySwal = withReactContent(Swal);
 
   const [email, setEmail] = useState("");
