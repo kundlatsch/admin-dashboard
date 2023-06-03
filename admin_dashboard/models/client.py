@@ -48,6 +48,7 @@ class Client():
             client.get("id")
         )
     
+    @staticmethod
     def list_all() -> List['Client']:
         # TODO: add pagination
         query = f"SELECT * FROM `Clients`"

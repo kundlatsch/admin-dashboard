@@ -15,3 +15,13 @@ CREATE TABLE Clients (
     rg_state varchar(255) NOT NULL,
     phone_number varchar(255) NOT NULL
 );
+
+CREATE TABLE Adresses (
+	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    address varchar(255) NOT NULL,
+    complement varchar(255),
+    city varchar(255),
+    state varchar(255),
+    client_id int,
+    FOREIGN KEY (client_id) REFERENCES Clients(id)
+);
