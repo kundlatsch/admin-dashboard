@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if(token) {
-        adminAPI.defaults.headers.Authorization = `Bearer ${JSON.parse(token)}`;
+        adminAPI.defaults.headers.common["x-auth-token"] = `${JSON.parse(token)}`;
       const name = localStorage.getItem('name');
       setGlobalUsername(name);
       setAuthenticated(true);
@@ -24,8 +24,8 @@ function AuthProvider({ children }) {
   
 
   async function handleLogin(email, password) {
-    const { data } = await adminAPI.post('/auth', {
-      "A": 1,
+    const { data } = await adminAPI.post('/users/login', {
+      "request": true,
       email,
       password,
     }).catch(err => {
@@ -39,7 +39,7 @@ function AuthProvider({ children }) {
       localStorage.setItem('name', name);
       setGlobalUsername(name);
       localStorage.setItem('token', JSON.stringify(token));
-      adminAPI.defaults.headers.Authorization = `Bearer ${token}`;
+      adminAPI.defaults.headers.common["x-auth-token"] = `${token}`;
       setAuthenticated(true);
       return true;
     }
@@ -51,7 +51,7 @@ function AuthProvider({ children }) {
     setGlobalUsername("");
     localStorage.removeItem('token');
     localStorage.removeItem('name');
-    adminAPI.defaults.headers.Authorization = undefined;
+    adminAPI.defaults.headers.common["x-auth-token"] = undefined;
   }
 
   if (loading) {
