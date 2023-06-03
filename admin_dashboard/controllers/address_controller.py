@@ -11,6 +11,15 @@ def list(client_id):
     return list_of_addresses
 
 @authenticate
+def retrieve(client_id: str, address_id: str):
+    address = Address.get_by_field('id', address_id)
+    if not address:
+        return {"message": "Address not found."}, 400
+    
+    return address.to_dict()
+
+
+@authenticate
 def insert(client_id):
     data = request.json
 
