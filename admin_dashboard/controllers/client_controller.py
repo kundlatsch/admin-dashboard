@@ -75,12 +75,12 @@ def update(client_id: str):
 
 @authenticate
 def delete(client_id: str):
-    user = Client.get_by_field('id', client_id)
-    if not user:
+    client = Client.get_by_field('id', client_id)
+    if not client:
         return {"message": "User not found."}, 400
 
-    deleted = user.delete()
+    deleted = client.delete()
     if not deleted:
-        return {"message": "Fail while deleting the user from the database. Try again in a feel moments."}, 500
+        return {"message": "Fail while deleting the client from the database. Try again in a feel moments."}, 500
     
     return {"message": "Success."}, 200
