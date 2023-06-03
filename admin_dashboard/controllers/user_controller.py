@@ -5,16 +5,15 @@ from passlib.hash import sha256_crypt
 from ..auth import authenticate
 from ..db import fetch_one
 from ..models.user import User
+from ..validators import validate_email
 
-# @authenticate
-def list():
-    user = User.get_by_field('id', 1)
-    if user: return user.to_dict()
-    else: return []
 
 def insert():
     data = request.json
+
     email = data.get("email")
+    if not email or not validate_email(email):
+        return {"message": "Invalid email address."}, 400
     user = User.get_by_field('email', email)
     if user:
         return {"message": "Email already in use."}, 400

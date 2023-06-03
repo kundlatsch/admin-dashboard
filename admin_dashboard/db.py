@@ -11,17 +11,32 @@ connection_dict = {
 
 def fetch_one(query):
     connection = pymysql.connect(**connection_dict)
+    try:
+        with connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                result = cursor.fetchone()
+                return result
+    except Exception as Er:
+        print(Er)
 
-    with connection:
-        with connection.cursor() as cursor:
-            cursor.execute(query)
-            result = cursor.fetchone()
-            return result
+def fetch_all(query):
+    connection = pymysql.connect(**connection_dict)
+    try:
+        with connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+                result = cursor.fetchall()
+                return result
+    except Exception as Er:
+        print(Er)
 
 def execute(query):
     connection = pymysql.connect(**connection_dict)
-
-    with connection:
-        with connection.cursor() as cursor:
-            cursor.execute(query)
-        connection.commit()
+    try:
+        with connection:
+            with connection.cursor() as cursor:
+                cursor.execute(query)
+            connection.commit()
+    except Exception as Er:
+        print(Er)
