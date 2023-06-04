@@ -1,0 +1,45 @@
+.create-client-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.form-base-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.form-create-client {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+.form-container-create-client {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.form-container-create-client label {
+    color: var(--text-color)
+}
+
+.form-container-create-client span {
+    color: rgb(236, 115, 115);
+}
+
+.create-client-input {
+    width: 90%;
+}
+
+#create-client-button {
+    width: 30%;
+    margin-top: 20px;
+    height: 50px;
+}

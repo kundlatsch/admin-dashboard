@@ -12,74 +12,32 @@ function Dashboard() {
 
   const { authenticated, globalUsername, handleLogout } = useContext(Context);
 
-  const [username, setUsername] = useState("");
   const [clients, setClients] = useState([]);
-  const [weekDayNumber, setWeekdayNumber] = useState();
-  const [dayAnime, setDayAnime] = useState([]);
-  const [dialogOpen, setDialogOpen] = useState(false);
 
   let navigate = useNavigate();
 
-  let card_data = {
-    id: 1,
-    name: "Gustavo",
-    cpf: "11551827905",
-    rg: "6663708",
-    rg_state: "ssp-sc",
-    date_of_birth: "26/09/1999",
-    phone_number: "48 999527764"
-  }
-
-  const handleClickDialogOpen = () => {
-    setDialogOpen(true);
-  };
-
-  const handleDialogClose = () => {
-    setDialogOpen(false);
-  };
-
-  // const handleDialogReturn = (newAnime) => {
-  //   if (newAnime.animeWeekDay == weekDayNumber) {
-  //     setDayAnime([...dayAnime, newAnime]);
-  //   }
-  // }
-
-  const navigateToHistory = () => {
-    navigate("/");
+  const navigateToNewClient = () => {
+    navigate("/new_client");
   };
 
   const getClientData = async () => {
-    const { data } = await adminAPI.get(`/clients/`);
-    if (!data) {
-      return [];
+    try {
+      const { data } = await adminAPI.get(`/clients/`);
+      return data
     }
-    return data;
+    catch (err) {
+      return []
+    }
   }
 
   useEffect(() => {
     if (!authenticated) {
       navigate("/");
     }
-    setUsername(globalUsername);
     
     getClientData().then(data => setClients(data));
     
   }, []);
-
-  const handlePlusClick = async (anime) => {
-    const updateId = anime.id;
-    const newCurrentEpisode = anime.currentEpisode + 1;
-
-    if (anime.currentEpisode <= anime.totalEpisodes) {
-      // await adminAPI.put(`animes/watch/${anime.id}`);
-    }
-
-    const updateAnimeList = (dayAnime.map(animeMap => {
-      return animeMap.id === updateId && newCurrentEpisode <= animeMap.totalEpisodes ? 
-        { ...animeMap, currentEpisode: newCurrentEpisode }: animeMap
-    }));
-    setDayAnime(updateAnimeList);
-  }
 
   const handleLogoutClick = () => {
     handleLogout();
@@ -98,7 +56,7 @@ function Dashboard() {
           <button
             type="submit" 
             className="green-button"
-            onClick={navigateToHistory}
+            onClick={navigateToNewClient}
           >
             Add new client
           </button>

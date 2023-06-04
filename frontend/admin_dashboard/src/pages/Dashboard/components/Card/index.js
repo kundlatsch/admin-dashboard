@@ -34,7 +34,6 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
       }, []);
 
     let handleOpenCard = () => {
-        console.log("aaaaa")
         if (isActive) {
             setIsActive(false)
             setDisplayContent(false)
@@ -82,6 +81,12 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
                 </div>
               })
             }
+            <div className='card-attribute card-clickable card-edit'>
+                <b>Edit Client</b>
+            </div>
+            <div className='card-attribute card-clickable card-delete'>
+                <b>Delete Client</b>
+            </div>
         </div> 
     </div>
 }

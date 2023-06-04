@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if(token) {
-        adminAPI.defaults.headers.common["x-access-token"] = token;
+      adminAPI.defaults.headers.common["x-access-token"] = token;
       const name = localStorage.getItem('name');
       setGlobalUsername(name);
       setAuthenticated(true);
