@@ -1,23 +1,28 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
+import { FiArrowLeft } from 'react-icons/fi';
 
 import './styles.css';
+import { Context } from '../../context/AuthContext';
 import adminAPI from '../../services/adminAPI';
 
 const NewClient = () => {
 
   let navigate = useNavigate();
+  const { authenticated } = useContext(Context);
   const MySwal = withReactContent(Swal);
+  
+  useEffect(() => {
+    if (!authenticated) {
+      navigate("/");
+    }
+  }, []);
 
-  const initialValues = {
-    Email: "",
-    Username: "",
-    Password: "",
-  }
+  const initialValues = {}
 
   const validationSchema = Yup.object().shape({
     Name: Yup.string().required().min(1).max(50),
@@ -67,6 +72,10 @@ const NewClient = () => {
   return (
     <div className="center-container">
       <div className="default-container">
+        <Link to='/' className='return-button'>
+            <FiArrowLeft />
+            Return
+        </Link>
         <h1>Add new client</h1>
           <Formik
             initialValues={initialValues}

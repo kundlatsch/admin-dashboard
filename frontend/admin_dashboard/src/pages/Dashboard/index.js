@@ -10,7 +10,7 @@ import Card from './components/Card';
 
 function Dashboard() {
 
-  const { authenticated, globalUsername, handleLogout } = useContext(Context);
+  const { authenticated, handleLogout } = useContext(Context);
 
   const [clients, setClients] = useState([]);
 
