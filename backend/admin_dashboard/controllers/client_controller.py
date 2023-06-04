@@ -2,6 +2,7 @@ from flask import abort, request
 
 from ..auth import authenticate
 from ..models.client import Client
+from ..controllers.address_controller import insert as inser_address
 from ..validators import validate_cpf, validate_rg, validate_date, validate_phone_number
 
 @authenticate
@@ -50,6 +51,11 @@ def insert():
     has_created = new_client.save()
     if not has_created:
         return {"message": "Fail while saving user in the database. Try again in a feel moments."}, 500
+    
+    address = data.get("address")
+    if address:
+        saved_client = Client.get_by_field('cpf', new_client.cpf)
+        inser_address(saved_client.id)
     
     return {"message": "Success."}, 200
     

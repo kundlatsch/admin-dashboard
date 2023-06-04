@@ -34,8 +34,8 @@ def insert(client_id: str):
     new_address = Address(
         address,
         data.get("complement", ""),
-        data.get("city", "Cidade não informada"),
-        data.get("state", "Estado não informado"),
+        data.get("city", ""),
+        data.get("state", ""),
         client.id
     )
     
