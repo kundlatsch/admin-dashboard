@@ -1,4 +1,6 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 
 import adminAPI from '../../../../services/adminAPI';
 import './styles.css';
@@ -8,6 +10,26 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
     const [isActive, setIsActive] = useState(false);
     const [displayContent, setDisplayContent] = useState(false);
     const [addresses, setAddresses] = useState([]);
+    const [deleted, setDeleted] = useState(false)
+
+    const MySwal = withReactContent(Swal);
+
+    const handleDelete = () => {
+        MySwal.fire({
+          title: 'Do you want to delete permanently this client?',
+          showDenyButton: true,
+          showCancelButton: true,
+          showConfirmButton: false,
+          denyButtonText: `Delete`,
+          }).then((result) => {
+          if (result.isDenied) {
+            adminAPI.delete(`/clients/${id}`).then(data => {
+              MySwal.fire('Client deleted', '', 'success')
+              setDeleted(true)
+            });
+          }
+        })
+    }
 
     const getClientAddresses = async () => {
         try {
@@ -44,7 +66,7 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
         }
     }
 
-    return <div class="card">
+    return <div className={deleted ? 'deleted' : 'card'}>
         <button 
             type="button" 
             className={isActive ? 'collapsible-card active-card' : 'collapsible-card'} 
@@ -84,7 +106,7 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
             <div className='card-attribute card-clickable card-edit'>
                 <b>Edit Client</b>
             </div>
-            <div className='card-attribute card-clickable card-delete'>
+            <div className='card-attribute card-clickable card-delete' onClick={handleDelete}>
                 <b>Delete Client</b>
             </div>
         </div> 

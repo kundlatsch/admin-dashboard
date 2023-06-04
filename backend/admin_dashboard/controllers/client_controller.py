@@ -2,6 +2,7 @@ from flask import abort, request
 
 from ..auth import authenticate
 from ..models.client import Client
+from ..models.address import Address
 from ..controllers.address_controller import insert as inser_address
 from ..validators import validate_cpf, validate_rg, validate_date, validate_phone_number
 
@@ -84,6 +85,8 @@ def delete(client_id: str):
     client = Client.get_by_field('id', client_id)
     if not client:
         return {"message": "User not found."}, 400
+
+    Address.delete_address_from_client(client.id)
 
     deleted = client.delete()
     if not deleted:

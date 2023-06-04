@@ -51,6 +51,15 @@ class Address():
         query = f"SELECT * FROM `Addresses` WHERE `client_id`='{client_id}'"
         list_of_addresses = fetch_all(query)
         return list_of_addresses
+
+    @staticmethod
+    def delete_address_from_client(client_id: str) -> bool:
+        query = f"DELETE FROM `Addresses` WHERE `client_id`={client_id};"
+        try:
+            execute(query)
+            return True
+        except:
+            return False
     
     def delete(self) -> bool:
         query = f"DELETE FROM `Addresses` WHERE `id`={self.id};"
