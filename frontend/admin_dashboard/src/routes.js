@@ -9,9 +9,10 @@ const Routing = () => {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Home />}/>
+        <Route path='/' element={<Dashboard />}/>
+        <Route path='/login' element={<Home />}/>
         <Route path='/register' element={<Register />}/>
-        <Route path='/dashboard' element={<Dashboard />}/>
+        {/* <Route path='/dashboard' element={<Dashboard />}/> */}
         <Route path='*' element={Home}/>
       </Routes>
     </BrowserRouter>

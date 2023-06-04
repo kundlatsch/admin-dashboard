@@ -1,0 +1,57 @@
+.card {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+ 
+.collapsible-card {
+    background-color: #b9b9b9;
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 80%;
+    border: none;
+    text-align: center;
+    outline: none;
+    font-size: 15px;
+}
+  
+  /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+.active-card, .collapsible-card:hover {
+    background-color: #c0a286;
+}
+  
+  /* Style the collapsible content. Note: hidden by default */
+.content-card-inactive {
+    display: none;
+}
+  
+.content-card-active {
+    padding: 10px;
+    padding-top: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #f1f1f1;
+    width: 80%;
+    flex-flow: wrap;
+}
+
+.card-attribute {
+    margin-top: 10px;
+    height: 50px;
+    min-width: 100px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: white;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}

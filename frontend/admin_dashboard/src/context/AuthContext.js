@@ -13,7 +13,7 @@ function AuthProvider({ children }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if(token) {
-        adminAPI.defaults.headers.common["x-auth-token"] = token;
+        adminAPI.defaults.headers.common["x-access-token"] = token;
       const name = localStorage.getItem('name');
       setGlobalUsername(name);
       setAuthenticated(true);
@@ -38,8 +38,8 @@ function AuthProvider({ children }) {
       const { token, name } = data;
       localStorage.setItem('name', name);
       setGlobalUsername(name);
-      localStorage.setItem('token', JSON.stringify(token));
-      adminAPI.defaults.headers.common["x-auth-token"] = token;
+      localStorage.setItem('token', token);
+      adminAPI.defaults.headers.common["x-access-token"] = token;
       setAuthenticated(true);
       return true;
     }
@@ -51,7 +51,7 @@ function AuthProvider({ children }) {
     setGlobalUsername("");
     localStorage.removeItem('token');
     localStorage.removeItem('name');
-    adminAPI.defaults.headers.common["x-auth-token"] = undefined;
+    adminAPI.defaults.headers.common["x-access-token"] = undefined;
   }
 
   if (loading) {

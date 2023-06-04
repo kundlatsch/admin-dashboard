@@ -32,7 +32,7 @@ const Register = () => {
   });
 
   function handleLoginClick() {
-    navigate("/login");
+    navigate("/");
   }
 
   const handleRegister = (data) => {

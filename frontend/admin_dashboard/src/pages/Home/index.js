@@ -80,7 +80,7 @@ function Home() {
         </button>
 
         <p onClick={handleRegisterClick}>
-          Don't have an account? Click <u>here</u> to register
+          Don't have an account? Click here to register
         </p>
       </div>
     </div>

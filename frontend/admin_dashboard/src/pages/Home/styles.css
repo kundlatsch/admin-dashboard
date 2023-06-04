@@ -41,9 +41,14 @@
   height: 100vh;
 }
 
-#nen {
-  width: 40%;
-  margin-left: 20%;
+#login-page p {
+  color: var(--primary-color);
+  margin-top: 40px;
+}
+
+#login-page p:hover {
+  text-decoration: underline;
+  cursor: pointer;
 }
 
 @media (max-width: 500px) {
