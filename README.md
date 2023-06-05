@@ -49,6 +49,7 @@ Diversas melhorias podem ser feitas no projeto, como (mas não limitado a):
     - Organizar melhor o CSS das páginas
     - Componentizar mais o projeto
     - Adicionar paginação nas listagens de clientes e endereços
+* Testes: Apenas alguns poucos testes foram adicionados para criar a estrutura. É necessário adicionar mais testes de unidade.
 
 ## Imagens
 
