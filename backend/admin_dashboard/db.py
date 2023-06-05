@@ -2,7 +2,7 @@ import pymysql.cursors
 
 
 connection_dict = {
-    "host": 'localhost',
+    "host": 'database',
     "user": 'root',
     "password": 'my-secret-pw',
     "database": 'ADMIN',

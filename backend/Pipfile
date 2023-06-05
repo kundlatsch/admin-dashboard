@@ -11,6 +11,7 @@ pymysql = "*"
 passlib = "*"
 cryptography = "*"
 flask-cors = "*"
+gunicorn = "*"
 
 [dev-packages]
 

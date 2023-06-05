@@ -1,0 +1,29 @@
+version: "3"
+services:
+  db:
+    container_name: database
+    build: database/.
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: ADMIN
+      MYSQL_ROOT_PASSWORD: my-secret-pw
+    ports:
+      - 3306:3306
+  
+  frontend:
+    container_name: frontend
+    build: ./frontend
+    ports:
+      - 3000:3000
+    stdin_open: true
+    command: npm start
+    tty: true
+  
+  backend:
+    container_name: backend
+    build: ./backend
+    volumes:
+      - '/app'
+    ports:
+      - 5000:5000
+    command: python ./run.py
