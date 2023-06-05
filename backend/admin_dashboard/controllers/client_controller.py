@@ -69,6 +69,26 @@ def update(client_id: str):
     
     data = request.json
 
+    date_of_birth = data.get("date_of_birth", "")
+    is_dob_valid = validate_date(date_of_birth)
+    if not is_dob_valid:
+        return {"message": "Invalid or missing date of birth."}, 400
+    
+    cpf = data.get("cpf", "")
+    is_cpf_valid = validate_cpf(cpf)
+    if not is_cpf_valid:
+        return {"message": "Invalid or missing CPF."}, 400
+
+    rg = data.get("rg", "")
+    is_rg_valid = validate_rg(rg)
+    if not is_rg_valid:
+        return {"message": "Invalid or missing RG."}, 400
+
+    phone_number = data.get("phone_number", "")
+    is_phone_number_valid = validate_phone_number(phone_number)
+    if not is_phone_number_valid:
+        return {"message": "Invalid or missing phone number."}, 400
+
     accepted_fields = ["name", "date_of_birth", "cpf", "rg", "rg_state", "phone_number"]
     invalid_keys = [key for key in data if key not in accepted_fields]
     for key in invalid_keys:

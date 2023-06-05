@@ -44,16 +44,6 @@
     height: 50px;
 }
 
-.return-button {
-    color: var(--title-color);
-    font-weight: bold;
-    text-decoration: none;
-  
-    display: flex;
-    align-items: center;
-    margin-right: 80%;
-}
-
 .deleted {
     display: none;
 }

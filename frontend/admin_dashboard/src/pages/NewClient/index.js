@@ -38,7 +38,6 @@ const NewClient = () => {
   });
 
   const handleCreateClient = (data) => {
-    console.log("salve")
     adminAPI.post('/clients/', {
       name: data.Name,
       cpf: data.CPF,

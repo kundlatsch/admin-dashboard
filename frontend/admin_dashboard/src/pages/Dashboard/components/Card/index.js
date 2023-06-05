@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import withReactContent from 'sweetalert2-react-content';
 
@@ -12,11 +13,13 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
     const [addresses, setAddresses] = useState([]);
     const [deleted, setDeleted] = useState(false)
 
+    let navigate = useNavigate();
+
     const MySwal = withReactContent(Swal);
 
     const handleDelete = () => {
         MySwal.fire({
-          title: 'Do you want to delete permanently this client?',
+          title: 'Do you want to permanently delete this client?',
           showDenyButton: true,
           showCancelButton: true,
           showConfirmButton: false,
@@ -29,6 +32,10 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
             });
           }
         })
+    }
+
+    const handleEdit = () => {
+      navigate(`/edit_client/${id}`, { state: { name, cpf, rg, rg_state, date_of_birth, phone_number } })
     }
 
     const getClientAddresses = async () => {
@@ -103,7 +110,7 @@ export default function Card({id, name, cpf, rg, rg_state, date_of_birth, phone_
                 </div>
               })
             }
-            <div className='card-attribute card-clickable card-edit'>
+            <div className='card-attribute card-clickable card-edit' onClick={handleEdit}>
                 <b>Edit Client</b>
             </div>
             <div className='card-attribute card-clickable card-delete' onClick={handleDelete}>
