@@ -1,6 +1,6 @@
 import pymysql.cursors
 
-
+# if running locally change host to 127.0.0.1
 connection_dict = {
     "host": 'database',
     "user": 'root',

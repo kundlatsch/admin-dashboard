@@ -47,12 +47,12 @@ button {
   font-size: large;
 }
 
-.green-button {
+.orange-button {
   background: var(--primary-color);
   color: #FFF;
 }
 
-.green-button:hover {
+.orange-button:hover {
   background: #a84300;
 }
 
@@ -136,6 +136,10 @@ body::-webkit-scrollbar-thumb {
   margin-right: 80%;
 }
 
+.hide-resize-observer {
+  display: none !important;
+}
+
 @media (max-width: 500px) {
   .default-container {
     width: 80%;
@@ -152,4 +156,9 @@ body::-webkit-scrollbar-thumb {
     font-size: 14px;
   }
 
+}
+
+iframe
+{
+    display: none;
 }

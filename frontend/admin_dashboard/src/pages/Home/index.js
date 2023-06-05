@@ -11,7 +11,7 @@ import './styles.css';
 function Home() {
 
   let navigate = useNavigate();
-  const { authenticated, handleLogin } = useContext(Context);
+  const { handleLogin } = useContext(Context);
   const MySwal = withReactContent(Swal);
 
   const [email, setEmail] = useState("");
@@ -72,7 +72,7 @@ function Home() {
         />
 
         <button
-          className="green-button"
+          className="orange-button"
           id="login-button"
           onClick={handleLoginClick}
         >

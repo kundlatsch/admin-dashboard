@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { FiPlus } from 'react-icons/fi';
 import { useNavigate } from 'react-router-dom';
 
 import './styles.css';
@@ -37,7 +36,7 @@ function Dashboard() {
     
     getClientData().then(data => setClients(data));
     
-  }, []);
+  });
 
   const handleLogoutClick = () => {
     handleLogout();
@@ -55,14 +54,14 @@ function Dashboard() {
 
           <button
             type="submit" 
-            className="green-button"
+            className="orange-button"
             onClick={navigateToNewClient}
           >
             Add new client
           </button>
         </div>
 
-        <div className="anime-container">
+        <div className="client-container">
           {
             clients.map(client => {
               return <Card

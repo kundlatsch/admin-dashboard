@@ -20,7 +20,7 @@
     color: rgb(48, 48, 48);
 }
 
-.anime-container {
+.client-container {
     display: flex;
     flex-direction: column;
     align-items: center;

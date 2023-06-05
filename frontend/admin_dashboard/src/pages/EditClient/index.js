@@ -23,7 +23,7 @@ function EditClient() {
     if (!authenticated) {
       navigate("/");
     }
-  }, []);
+  });
 
   const handleUpdateClient = () => {
     adminAPI.patch(`/clients/${client_id}`, {
@@ -90,7 +90,7 @@ function EditClient() {
   return (
     <div className="center-container">
       <div className="default-container" id="edit-client">
-        <Link to='/' className='return-button'>
+        <Link to='/dashboard' className='return-button'>
             <FiArrowLeft />
             Return
         </Link>
@@ -167,7 +167,7 @@ function EditClient() {
         </div>
 
         <button
-          className="green-button"
+          className="orange-button"
           onClick={handleUpdateClient}
         >
           Update Client
@@ -224,7 +224,7 @@ function EditClient() {
         </div>
 
         <button
-          className="green-button"
+          className="orange-button"
           onClick={handleCreateAddress}
         >
           Save address

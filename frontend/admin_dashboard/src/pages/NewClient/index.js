@@ -20,7 +20,7 @@ const NewClient = () => {
     if (!authenticated) {
       navigate("/");
     }
-  }, []);
+  });
 
   const initialValues = {}
 
@@ -71,7 +71,7 @@ const NewClient = () => {
   return (
     <div className="center-container">
       <div className="default-container">
-        <Link to='/' className='return-button'>
+        <Link to='/dashboard' className='return-button'>
             <FiArrowLeft />
             Return
         </Link>
@@ -203,7 +203,7 @@ const NewClient = () => {
             </div>
             <button
                 type="submit" 
-                className="green-button"
+                className="orange-button"
                 id="create-client-button"
             >
                 Create client

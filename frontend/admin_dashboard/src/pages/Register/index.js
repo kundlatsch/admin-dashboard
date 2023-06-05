@@ -114,7 +114,7 @@ const Register = () => {
 
           <button
             type="submit" 
-            className="green-button"
+            className="orange-button"
             id="register-button"
           >
             Register
