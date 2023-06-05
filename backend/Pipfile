@@ -12,6 +12,7 @@ passlib = "*"
 cryptography = "*"
 flask-cors = "*"
 gunicorn = "*"
+pytest = "*"
 
 [dev-packages]
 
