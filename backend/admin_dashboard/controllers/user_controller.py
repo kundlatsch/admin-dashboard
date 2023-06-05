@@ -49,7 +49,6 @@ def login():
     if not valid_login:
         return {"message": "Email or password is invalid."}, 400
     
-    secret = "my_very_secret_key"
-    jwt_token = jwt.encode({"id": user.id}, secret, algorithm="HS256")
+    jwt_token = jwt.encode({"id": user.id}, 'my_very_secret_key', algorithm="HS256")
 
     return {"token": jwt_token, "name": user.name}

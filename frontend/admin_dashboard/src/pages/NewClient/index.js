@@ -20,7 +20,7 @@ const NewClient = () => {
     if (!authenticated) {
       navigate("/");
     }
-  });
+  }, []);
 
   const initialValues = {}
 

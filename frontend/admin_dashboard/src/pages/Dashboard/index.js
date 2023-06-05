@@ -36,7 +36,7 @@ function Dashboard() {
     
     getClientData().then(data => setClients(data));
     
-  });
+  }, []);
 
   const handleLogoutClick = () => {
     handleLogout();

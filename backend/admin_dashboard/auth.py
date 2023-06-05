@@ -15,8 +15,7 @@ def authenticate(f):
             return jsonify({'message' : 'Token not found.'}), 400
   
         try:
-            secret = "my_very_secret_key"
-            data = jwt.decode(token, secret, algorithms=["HS256"])
+            data = jwt.decode(token, 'my_very_secret_key', algorithms=["HS256"])
             user = User.get_by_field("id", data.get("id"))
             if not user.is_admin:
                 return jsonify({

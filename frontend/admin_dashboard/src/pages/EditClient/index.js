@@ -23,7 +23,7 @@ function EditClient() {
     if (!authenticated) {
       navigate("/");
     }
-  });
+  }, []);
 
   const handleUpdateClient = () => {
     adminAPI.patch(`/clients/${client_id}`, {

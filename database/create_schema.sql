@@ -16,7 +16,7 @@ CREATE TABLE Clients (
     phone_number varchar(255) NOT NULL
 );
 
-CREATE TABLE Adresses (
+CREATE TABLE Addresses (
 	id int NOT NULL AUTO_INCREMENT PRIMARY KEY,
     address varchar(255) NOT NULL,
     complement varchar(255),
